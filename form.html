@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Form</title>
+    
+    <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
+    <!-- Bulma Version 0.7.4-->
+    <link rel="stylesheet" href="bulma/css/bulma.css" />
+    
+    <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.js">
+    <link rel="stylesheet" href="css/form-style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
+    <script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
+
+    <script>
+        jQuery(function($) {
+            let options = {
+                dataType: 'xml',
+                onSave: function(evt, formData) {
+                    showPreview(formData)
+                },
+                formData: '<form-template><fields><field name="text-input-1454163102327" class="form-control" label="Text Field" description="" required="false" type="text" /><field name="date-input-1454163105133" class="form-control" label="Date Field" description="" required="false" type="date" /><field name="checkbox-group-1454163056695" label="Checkbox Group" style="multiple" description="" required="false" type="checkbox-group"><option value="option-1">Option 1</option><option value="option-2">Option 2</option></field></fields></form-template>'
+            };
+            const $fbEditor = $(document.getElementById('fb-editor'));
+
+            const formBuilder = $fbEditor.formBuilder(options);
+
+            function showPreview(formData) {
+                let formRenderOpts = {
+                    dataType: 'xml',
+                    formData
+                };
+                let $renderContainer = $('<form/>');
+                $renderContainer.formRender(formRenderOpts);
+                let html = `<!doctype html><title>Form Preview</title><body class="container"><h1>Preview</h1><hr>${$renderContainer.html()}</body></html>`;
+                var formPreviewWindow = window.open('', 'formPreview', 'height=480,width=640,toolbar=no,scrollbars=yes');
+
+                formPreviewWindow.document.write(html);
+                var style = document.createElement('link');
+                style.setAttribute('href', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+                style.setAttribute('rel', 'stylesheet');
+                style.setAttribute('type', 'text/css');
+                formPreviewWindow.document.head.appendChild(style);
+            }
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <p class="title is-4 has-text-light">DevForm</p>
+            </a>
+
+            <div class="dropdown is-right navbar-burger is-hoverable" aria-label="menu">
+                <div class="dropdown-trigger">
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                    <div class="dropdown-content">
+                        <a href="index.html" class="dropdown-item">Home</a>
+                        <a href="form.html" class="dropdown-item is-active">Create Form</a>
+                        <a href="about.html" class="dropdown-item">About</a>
+                        
+                        <p class="dropdown-divider"></p>
+                        
+                        <div class="tile is-parent is-mobile">
+                        <a role="button" class="button tile is-child is-warning is-outlined">Sing up</a>
+                            <div class="tile is-child"></div>
+                        <a role="button" class="button tile is-child is-dark is-outlined">Sing in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+            <div id="avlon" class="navbar-menu">
+                <div class=" navbar-end">
+                    <a href="index.html" class="navbar-item">Home</a>
+                    <a href="form.html" class="navbar-item is-active">Create Form</a>
+                    <a href="about.html" class="navbar-item">About</a>
+                </div>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end navbar-item">
+                        <div class="tile is-parent">
+                        <a role="button" class="button is-child is-warning is-outlined">Sing up</a>
+                            <div class="tile is-1 is-child"></div>
+                        <a role="button" class="button is-child is-dark is-outlined">Sing in</a>
+                        </div>
+                </div>
+            </div>
+    </nav>
+    
+    <div class="hero-body">
+    <div class="message is-primary"> 
+        <div class="message-header">
+            <h1 class="title has-text-light">Please create your form</h1>
+        </div>
+        <h2 class="subtitle has-text-primary">Drag and Drop components on the form field</h2>
+    <div id="build-wrap"></div>
+
+    <div id="fb-editor"></div>
+        
+    </div>    
+    </div>
+</body>
+<footer class="notification is-dark level">
+    <div class="level-right is-left" style="padding-lef: 50px">
+    <p class="" class="title is-7"> Made with <img class="icon" style="width: 4rem; padding-top: 1px; margin-left: 5px;" src="img/bulma.png" /></p>   
+    </div>
+    <div class="level-right is-left" style="padding-left: 0px">
+    <p class="" class="title is-7"> Built by Cirlorm |<a class="has-text-primary" href="http://www.twitter.com/cbavlon"> <i class="fa fa-twitter"></i> twitter</a> </p>   
+    </div>
+</footer>    
+
+</html>

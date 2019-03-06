@@ -1,0 +1,10 @@
+.hero {
+    margin-top: -10vh;
+}
+#rendered-form {
+    clear: both;
+    display: none;
+    buttton {
+        float: left;
+    }
+}
